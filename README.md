@@ -7,7 +7,7 @@ AI assistance was used solely for writing this README and generating plots. All 
 Studying were done using the following resources:
 
 - KMUTT CPE663 Lecture Slides
-- Google Deep Mind (https://github.com/YatootaY/transformer-from-scratch)
+- Google Deep Mind (https://github.com/google-deepmind/ai-foundations/tree/main/course_4)
 
 A Mini Transformer encoder built from scratch using PyTorch for a synthetic sequence classification task. Implemented as part of CPE663 Major Assignment 3.
 
