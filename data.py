@@ -18,16 +18,15 @@ class SequenceDataset(Dataset):
         masks = torch.tensor(self.masks[idx], dtype=torch.long)
         label = torch.tensor(self.labels[idx], dtype=torch.float)
         return tokens, masks, label
+    
+def get_dataloaders(train_path, val_path, test_path, batch_size=32):
 
-if __name__ == "__main__":
-    test_dataset = SequenceDataset('test.csv')
-    train_dataset = SequenceDataset('train.csv')
-    val_dataset = SequenceDataset('validation.csv')
+    train_dataset = SequenceDataset(train_path)
+    val_dataset = SequenceDataset(val_path)
+    test_dataset = SequenceDataset(test_path)
 
-    test_dataloader = DataLoader(test_dataset, batch_size=32, shuffle=False)
-    train_dataloader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-    val_dataloader = DataLoader(val_dataset, batch_size=32, shuffle=False)
+    train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
 
-    for tokens, masks, labels in train_dataloader:
-        print(tokens.shape, masks.shape, labels.shape)
-        break
+    return train_loader, val_loader, test_loader
